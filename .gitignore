@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Logs
+logs/
+*.log
+
+# Model artifacts – large binary files (uploaded separately to HF Spaces)
+artifacts/
+
+# Raw dataset – downloaded or stored locally
+data/
+
+# Environment variables (may contain API keys)
+.env
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker (if not needed for deployment)
+# docker-compose.yml  (keep if used)
+# .dockerignore        (keep)
