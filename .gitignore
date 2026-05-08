@@ -13,7 +13,7 @@ logs/
 *.log
 
 # Model artifacts – large binary files (uploaded separately to HF Spaces)
-#artifacts/
+artifacts/
 
 # Raw dataset – downloaded or stored locally
 data/
