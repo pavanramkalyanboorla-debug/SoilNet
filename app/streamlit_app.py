@@ -20,9 +20,10 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Disable XSRF protection to allow file uploads through Hugging Face proxy
+# ----------------------------------------------------------------------
+# Disable XSRF protection to allow file uploads behind Hugging Face proxy
+# ----------------------------------------------------------------------
 st.set_option("server.enableXsrfProtection", False)
-
 
 # ----------------------------------------------------------------------
 # Custom CSS (dark theme, clean cards)
@@ -114,7 +115,11 @@ st.markdown("""
 # ----------------------------------------------------------------------
 @st.cache_resource
 def load_pipeline():
-    return PredictPipeline()
+    try:
+        return PredictPipeline()
+    except Exception as e:
+        st.error(f"Failed to load model: {e}")
+        st.stop()
 
 pipeline = load_pipeline()
 
@@ -132,13 +137,12 @@ col1, col2 = st.columns([1, 1], gap="large")
 with col1:
     st.markdown("### 📤 Upload a soil image")
     uploaded = st.file_uploader(
-        "",  # label hidden, we have the heading above
+        "",
         type=["jpg", "jpeg", "png"],
         key="soil_uploader"
     )
 
     if uploaded is not None:
-        # Show image preview in a nice container
         image = Image.open(uploaded).convert("RGB")
         st.image(image, caption="Uploaded image", use_container_width=True)
 
