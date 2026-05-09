@@ -20,6 +20,10 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+# Disable XSRF protection to allow file uploads through Hugging Face proxy
+st.set_option("server.enableXsrfProtection", False)
+
+
 # ----------------------------------------------------------------------
 # Custom CSS (dark theme, clean cards)
 # ----------------------------------------------------------------------
